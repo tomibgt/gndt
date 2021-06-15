@@ -75,7 +75,7 @@ function gndt_register_taxonomy_publishing() { /* Register taxonomies for the pu
 }
 
 add_action('init', 'gndt_register_cpt_publishing'); /* Register custom post types. */
-add_action('init', 'gndt_register_cpt_publishing'); /* Register taxonomies. */
+add_action('init', 'gndt_register_taxonomy_publishing'); /* Register taxonomies. */
 add_action('admin_menu', 'gndt_publishing_menu'); /* Register Publishing settings menu in dashboard. */
 add_action('add_meta_boxes', 'gndt_research_post_metabox'); /* Hook to add metabox code. */
 ?>
