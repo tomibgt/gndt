@@ -74,8 +74,27 @@ function gndt_register_taxonomy_publishing() { /* Register taxonomies for the pu
       register_taxonomy('gndt_artifact', ['gndt_research'], $tax_args);
 }
 
+function gndt_populate_taxonomy_terms() { /* Add terms to custom taxonomy */
+  $tax_terms = array( /* taxonomy terms to add. left: taxonomy name, right: array of args */
+    'Awaiting Informal Review'    => ['description' => 'Awaiting Informal Review', 'slug' => 'await_review'],
+    'Awaiting Formal Review'      => ['description' => 'Awaiting Formal Review', 'slug' => 'await_formal_review'],
+    'Approved by Formal Review'   => ['description' => 'Approved by Formal Review', 'slug' => 'approved_formal'],
+    'Approved by Informal Review' => ['description' => 'Approved by Informal Review', 'slug' => 'approved_informal'],
+    'Rejected'                    => ['description' => 'Rejected', 'slug' => 'rejected'],
+  );
+
+  foreach($tax_terms as $term => $term_args) { /* add taxonomy terms */
+      if (!term_exists($term, 'gndt_artifact')) { /* if term doesn't already exist for taxonomy, add it */
+        wp_insert_term($term, 'gndt_artifact', $term_args);
+      }
+  }
+}
+
 add_action('init', 'gndt_register_cpt_publishing'); /* Register custom post types. */
 add_action('init', 'gndt_register_taxonomy_publishing'); /* Register taxonomies. */
+add_action('init', 'gndt_populate_taxonomy_terms'); /* Populate taxonomies with terms. This must be called after the taxonomy is registered. */
 add_action('admin_menu', 'gndt_publishing_menu'); /* Register Publishing settings menu in dashboard. */
 add_action('add_meta_boxes', 'gndt_research_post_metabox'); /* Hook to add metabox code. */
+
+add_action('admin_menu', 'gndt_populate_taxonomy_terms');
 ?>
