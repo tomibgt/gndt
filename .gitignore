@@ -1,0 +1,4 @@
+plugins/*
+!plugins/gndt
+themes/*
+!themes/twentyseventeen
