@@ -17,11 +17,6 @@ function gndt_activate(){
   ));
 
   add_role('gndt_admin', 'GNDT Admin', array(
-      'read' => true,
-      'edit_posts' => true,
-  	  'publish_posts' => true,
-      'delete_posts' => true,
-      'edit_others_posts' => true,
       'gndt_publish_researchposttypes' => true,
       'gndt_edit_researchposttypes' => true,
       'gndt_edit_others_researchposttypes' => true,
@@ -33,11 +28,6 @@ function gndt_activate(){
 
 
   add_role('gndt_scholar', 'GNDT Scholar', array(
-      'read' => true,
-      'edit_posts' => true,
-  	  'publish_posts' => true,
-      'delete_posts' => true,
-      'gndt_publish_researchposttypes' => true,
       'gndt_read_researchposttype' => true,
       'gndt_edit_researchposttype' => true,
       'gndt_edit_researchposttypes' => true,
@@ -45,13 +35,11 @@ function gndt_activate(){
   ));
 
   add_role('gndt_reviewer', 'GNDT Reviewer', array(
-      'read' => true,
-      'edit_posts' => false,
-  	  'publish_posts' => false,
-      'delete_posts' => false,
-      'gndt_edit_researchposttype' => true,
+      'gndt_publish_researchposttypes' => true,
       'gndt_read_researchposttype' => true,
-      'gndt_read_private_researchposttype' => true,
+      'gndt_edit_researchposttype' => true,
+      'gndt_edit_researchposttypes' => true,
+      'gndt_delete_researchposttype' => true,
   ));
 }
 
