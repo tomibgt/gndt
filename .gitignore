@@ -2,3 +2,4 @@ plugins/*
 !plugins/gndt
 themes/*
 !themes/twentyseventeen
+docker-compose.yml
